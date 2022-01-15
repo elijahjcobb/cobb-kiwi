@@ -17,6 +17,10 @@ const Page: NextPage<PageProps> = () => {
 	);
 };
 
+/*
+START on 3-2
+ */
+
 // export const getServerSideProps: GetServerSideProps<PageProps> = async (context) => {
 // 	return {
 // 		props: {}

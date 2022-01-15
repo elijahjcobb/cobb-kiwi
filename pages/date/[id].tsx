@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import * as FS from "fs";
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import MarkdownStyles from "../../styles/Markdown.module.scss";
+import styles from "../../styles/Markdown.module.scss";
 
 interface PageProps {
 	images: string[];
@@ -19,8 +19,18 @@ interface PageProps {
 
 const Page: NextPage<PageProps> = props => {
 	return (
-		<div>
-			<ReactMarkdown className={MarkdownStyles.md} remarkPlugins={[remarkGfm]}>{props.md}</ReactMarkdown>
+		<div className={styles.page}>
+			<a href={"/"} className={styles.header}>
+				<img className={styles.img} src={"/nz.png"} alt={"nz flag"}/>
+				<h1 className={styles.title}>cobb.kiwi</h1>
+			</a>
+			<h2 className={styles.date}>{new Date(props.date).toDateString()}</h2>
+			<ReactMarkdown className={styles.md} remarkPlugins={[remarkGfm]}>{props.md}</ReactMarkdown>
+			<div className={styles.imgs}>
+				{
+					props.images.map((img, i) => <img src={img} alt={"blog"} key={i}/>)
+				}
+			</div>
 		</div>
 	);
 };
