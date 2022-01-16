@@ -25,7 +25,9 @@ const Page: NextPage<PageProps> = props => {
 				<h1 className={styles.title}>cobb.kiwi</h1>
 			</a>
 			<h2 className={styles.date}>{new Date(props.date).toDateString()}</h2>
-			<ReactMarkdown className={styles.md} remarkPlugins={[remarkGfm]}>{props.md}</ReactMarkdown>
+			<div className={styles.mdContainer}>
+				<ReactMarkdown className={styles.md} remarkPlugins={[remarkGfm]}>{props.md}</ReactMarkdown>
+			</div>
 			<div className={styles.imgs}>
 				{
 					props.images.map((img, i) => <img src={img} alt={"blog"} key={i}/>)
