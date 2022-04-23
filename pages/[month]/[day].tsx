@@ -21,7 +21,7 @@ interface PageProps {
 const Page: NextPage<PageProps> = props => {
 
 	const getDay = useCallback(() => {
-		const date = new Date(props.date.replaceAll("-", "/") + "/2019");
+		const date = new Date(props.date.replace(RegExp("-", "g"), "/") + "/2019");
 		return date.toLocaleString('default', { month: 'short', day: "numeric", year: "numeric" });
 	}, [props.date]);
 
