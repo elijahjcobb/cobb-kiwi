@@ -4,40 +4,15 @@
  * https://elijahcobb.com
  */
 
-import type {NextPage, GetStaticProps, GetStaticPaths, GetServerSideProps} from "next";
-import styles from "../styles/Home.module.scss";
+import type { NextPage, GetServerSideProps } from "next";
 
-interface PageProps {
+const Page: NextPage = () => <></>;
 
+export const getServerSideProps: GetServerSideProps = async () => {
+	const date = new Date();
+	const month = date.getMonth();
+	const day = date.getDate();
+	return { redirect: { destination: `/${month}/${day}`, permanent: false } }
 }
-
-const Page: NextPage<PageProps> = () => {
-	return (
-		<span>Hello, Page!</span>
-	);
-};
-
-/*
-START on 3-2
- */
-
-// export const getServerSideProps: GetServerSideProps<PageProps> = async (context) => {
-// 	return {
-// 		props: {}
-// 	}
-// }
-
-// export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-// 	return {
-// 		props: {}
-// 	}
-// }
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-// 	return {
-// 		paths: [],
-// 		fallback: false
-// 	};
-// }
 
 export default Page;
